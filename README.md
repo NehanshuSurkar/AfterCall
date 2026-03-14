@@ -1,6 +1,6 @@
-# after_call
+# AfterCall
 
-A new Flutter project.
+AfterCall helps users remember what truely matters from phone conversations without taking notes during the call. Users can record or upload call audio after a conversation, and the app automatically converts speech into text and generates a concise summary with key points and action items. Built using dreamflow for rapid, visual app development. AfterCall integrates EleveLabs to transform summarized content into natural-sounding voice recaps, making it easy to review conversation anytime while keeping user privacy in control.  
 
 ## Getting Started
 
