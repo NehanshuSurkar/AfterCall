@@ -4,6 +4,7 @@ import 'package:after_call/screens/home_page.dart';
 import 'package:after_call/screens/onboarding_page.dart';
 import 'package:after_call/screens/processing_screen.dart';
 import 'package:after_call/screens/record_screen.dart';
+import 'package:after_call/screens/registration.dart';
 import 'package:after_call/screens/summary_screen.dart';
 import 'package:after_call/sevices/auth_service.dart';
 import 'package:flutter/material.dart';
@@ -65,6 +66,13 @@ class AppRouter {
         ),
 
         GoRoute(
+          path: '/register',
+          name: 'register',
+          pageBuilder:
+              (context, state) => _transitionPage(const RegisterPage()),
+        ),
+
+        GoRoute(
           path: AppRoutes.editSummary,
           name: 'edit-summary',
           pageBuilder: (context, state) {
@@ -108,4 +116,5 @@ class AppRoutes {
   static const String processing = '/processing';
   static const String summary = '/summary/:id';
   static const String editSummary = '/edit-summary/:id';
+  static const String register = '/register';
 }

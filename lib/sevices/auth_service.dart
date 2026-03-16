@@ -82,3 +82,42 @@ class AuthService extends ChangeNotifier {
     return !_isAuthenticated;
   }
 }
+
+// In your auth_service.dart file
+Future<bool> registerWithEmail(
+  String email,
+  String password,
+  String name,
+) async {
+  try {
+    // Your registration logic here
+    // Example with Firebase Auth:
+    /*
+    final userCredential = await _firebaseAuth.createUserWithEmailAndPassword(
+      email: email,
+      password: password,
+    );
+    
+    // Update user profile with name
+    await userCredential.user?.updateDisplayName(name);
+    
+    // Reload user to get updated info
+    await userCredential.user?.reload();
+    
+    // Update your local user state
+    _currentUser = User(
+      id: userCredential.user?.uid ?? '',
+      email: email,
+      name: name,
+    );
+    notifyListeners();
+    */
+
+    // Simulate success for now
+    await Future.delayed(const Duration(seconds: 1));
+    return true;
+  } catch (e) {
+    debugPrint('Registration failed: $e');
+    return false;
+  }
+}

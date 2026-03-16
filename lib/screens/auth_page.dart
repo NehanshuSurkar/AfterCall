@@ -487,7 +487,7 @@ class _AuthPageState extends State<AuthPage>
                                     const SizedBox(width: AppSpacing.xs),
                                     TextButton(
                                       onPressed: () {
-                                        // Add sign up navigation
+                                        context.go('/register');
                                       },
                                       child: Text(
                                         'Create Account',
