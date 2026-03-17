@@ -1,4 +1,5 @@
 import 'package:after_call/components/pressable_scale.dart';
+import 'package:after_call/navigation/nav.dart';
 import 'package:after_call/sevices/auth_service.dart';
 import 'package:after_call/theme.dart';
 import 'package:flutter/material.dart';
@@ -487,7 +488,7 @@ class _AuthPageState extends State<AuthPage>
                                     const SizedBox(width: AppSpacing.xs),
                                     TextButton(
                                       onPressed: () {
-                                        context.go('/register');
+                                        context.go(AppRoutes.register);
                                       },
                                       child: Text(
                                         'Create Account',
