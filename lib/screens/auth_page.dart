@@ -456,7 +456,7 @@ class _AuthPageState extends State<AuthPage>
                                                 width: AppSpacing.md,
                                               ),
                                               Text(
-                                                'Google',
+                                                'Continue with Google',
                                                 style: GoogleFonts.inter(
                                                   fontSize:
                                                       AppTypography.labelLarge,
