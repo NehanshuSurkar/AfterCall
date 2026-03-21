@@ -36,22 +36,19 @@ class _SummaryScreenState extends State<SummaryScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: context.colors.surface, // Uses theme surface color
-        foregroundColor: context.colors.onSurface, // Uses theme text/icon color
+        backgroundColor: context.colors.surface,
+        foregroundColor: context.colors.onSurface,
         elevation: 0,
         scrolledUnderElevation: 0,
         surfaceTintColor: Colors.transparent,
         leading: IconButton(
           onPressed: () => context.go('/'),
-          icon: Icon(
-            Icons.arrow_back_rounded,
-            color: context.colors.onSurface, // Theme icon color
-          ),
+          icon: Icon(Icons.arrow_back_rounded, color: context.colors.onSurface),
         ),
         title: Text(
           'Call Summary',
           style: context.textStyles.titleLarge?.semiBold.copyWith(
-            color: context.colors.onSurface, // Theme text color
+            color: context.colors.onSurface,
           ),
         ),
         actions: [
@@ -306,7 +303,7 @@ class _SummaryScreenState extends State<SummaryScreen> {
                 _buildSection(
                   context,
                   theme,
-                  'Transcript',
+                  'Transcript...',
                   Icons.notes,
                   Text(
                     record.transcript,
