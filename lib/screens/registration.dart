@@ -82,8 +82,6 @@ class _RegisterPageState extends State<RegisterPage>
 
     setState(() => _isLoading = true);
 
-    final authService = context.read<AuthService>();
-
     // Check if your AuthService has a registration method
     // If not, you'll need to add it to your AuthService class
     // final success = await authService.registerWithEmail(

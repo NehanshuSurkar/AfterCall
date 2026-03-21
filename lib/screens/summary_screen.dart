@@ -18,8 +18,6 @@ class SummaryScreen extends StatefulWidget {
 }
 
 class _SummaryScreenState extends State<SummaryScreen> {
-  bool _isPlayingVoice = false;
-
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);

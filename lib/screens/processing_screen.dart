@@ -85,43 +85,6 @@ class _ProcessingScreenState extends State<ProcessingScreen>
     }
   }
 
-  // Future<void> _processAudio() async {
-  //   try {
-  //     final aiService = AIService(); // No config needed
-  //     final authService = context.read<AuthService>();
-  //     final recordService = context.read<CallRecordService>();
-
-  //     final record = await aiService.generateSummary(
-  //       widget.audioPath,
-  //       authService.currentUser?.id ?? 'demo',
-  //     );
-
-  //     await recordService.addRecord(record);
-
-  //     if (mounted) {
-  //       setState(() => _isProcessing = false);
-  //       await Future.delayed(const Duration(milliseconds: 500));
-  //       if (mounted) {
-  //         context.go('/summary/${record.id}');
-  //       }
-  //     }
-  //   } catch (e) {
-  //     if (!mounted) return;
-  //     String message;
-  //     if (e is FileAccessException) {
-  //       message = 'File access error: ${e.message}';
-  //     } else if (e is TranscriptionException) {
-  //       message = 'Transcription failed: ${e.message}';
-  //     } else if (e is SummarizationException) {
-  //       message = 'Processing failed: ${e.message}';
-  //     } else {
-  //       message = 'Processing failed. Please try again.';
-  //     }
-  //     ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(message)));
-  //     context.pop();
-  //   }
-  // }
-
   @override
   void dispose() {
     _controller.dispose();
