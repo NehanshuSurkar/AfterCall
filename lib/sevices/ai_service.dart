@@ -107,7 +107,7 @@ class AIService {
       // Send to ElevenLabs STT
       return await _sendToElevenLabsStt(audioBytes, filename);
     } catch (e) {
-      debugPrint('❌ ElevenLabs STT error: $e');
+      debugPrint('ElevenLabs STT error: $e');
       if (e is TranscriptionException || e is FileAccessException) rethrow;
       throw TranscriptionException('Could not transcribe your recording: $e');
     }
@@ -183,10 +183,10 @@ class AIService {
           throw TranscriptionException('No speech detected in recording');
         }
 
-        debugPrint('✅ ElevenLabs STT successful! Text length: ${text.length}');
+        debugPrint('ElevenLabs STT successful! Text length: ${text.length}');
         return text.trim();
       } catch (e) {
-        debugPrint('❌ JSON parse error: $e');
+        debugPrint('JSON parse error: $e');
         throw TranscriptionException('Invalid response from service');
       }
     }
@@ -223,126 +223,6 @@ class AIService {
       rethrow;
     }
   }
-
-  //   Future<String> transcribeAudio(String audioPath) async {
-  //   try {
-  //     debugPrint('=== Starting ElevenLabs Speech-to-Text ===');
-
-  //     // Prepare audio bytes
-  //     Uint8List audioBytes;
-  //     String filename = 'audio.m4a';
-
-  //     if (audioPath.startsWith('data:')) {
-  //       final commaIndex = audioPath.indexOf(',');
-  //       final base64Data = commaIndex != -1 ? audioPath.substring(commaIndex + 1) : '';
-  //       audioBytes = base64Decode(base64Data);
-  //       final mime = audioPath.substring(5, audioPath.indexOf(';'));
-  //       if (mime.contains('mpeg')) filename = 'audio.mp3';
-  //       if (mime.contains('wav')) filename = 'audio.wav';
-  //       if (mime.contains('mp4') || mime.contains('aac')) filename = 'audio.m4a';
-  //       debugPrint('Using data URL, file type: $mime');
-  //     } else if (!kIsWeb) {
-  //       try {
-  //         final file = File(audioPath);
-  //         if (!await file.exists()) {
-  //           throw FileAccessException('Audio file not found');
-  //         }
-  //         audioBytes = await file.readAsBytes();
-  //         filename = audioPath.split('/').last;
-  //         debugPrint('Local file: $filename, size: ${audioBytes.length} bytes');
-  //       } catch (e) {
-  //         if (e is FileAccessException) rethrow;
-  //         debugPrint('File read error: $e');
-  //         throw FileAccessException('Unable to read the audio file');
-  //       }
-  //     } else {
-  //       throw Exception('Web audio not supported');
-  //     }
-
-  //     // ElevenLabs Speech-to-Text API endpoint
-  //     final uri = Uri.parse('https://api.elevenlabs.io/v1/speech-to-text');
-
-  //     debugPrint('ElevenLabs STT endpoint: $uri');
-
-  //     // Create multipart request for ElevenLabs STT
-  //     final request = http.MultipartRequest('POST', uri)
-  //       ..headers.addAll({
-  //         'xi-api-key': _elevenLabsApiKey,
-  //         'Accept': 'application/json',
-  //       })
-  //       ..files.add(http.MultipartFile.fromBytes(
-  //         'file',
-  //         audioBytes,
-  //         filename: filename,
-  //       ))
-  //       ..fields['model_id'] = 'scribe_v1';
-
-  //     debugPrint('Sending to ElevenLabs STT API...');
-
-  //     final stopwatch = Stopwatch()..start();
-  //     final streamed = await request.send();
-  //     final response = await http.Response.fromStream(streamed);
-  //     stopwatch.stop();
-
-  //     final body = utf8.decode(response.bodyBytes);
-
-  //     debugPrint('=== ElevenLabs STT Response ===');
-  //     debugPrint('Status: ${response.statusCode}');
-  //     debugPrint('Time: ${stopwatch.elapsedMilliseconds}ms');
-  //     debugPrint('Response (first 200 chars): ${body.length > 200 ? '${body.substring(0, 200)}...' : body}');
-  //     // Replace the error handling section with this:
-
-  //     if (response.statusCode >= 200 && response.statusCode < 300) {
-  //       try {
-  //         final jsonMap = jsonDecode(body) as Map<String, dynamic>;
-
-  //         // Log the full structure for debugging
-  //         debugPrint('Response keys: ${jsonMap.keys.join(', ')}');
-
-  //         // ElevenLabs STT returns text directly in response
-  //         final text = jsonMap['text'] as String?;
-  //         if (text == null || text.isEmpty) {
-  //           throw TranscriptionException('No speech detected in recording');
-  //         }
-
-  //         debugPrint('✅ ElevenLabs STT successful! Text: "$text"');
-  //         return text.trim();
-  //       } catch (e) {
-  //         debugPrint('❌ JSON parse error: $e');
-  //         debugPrint('Raw response: $body');
-  //         throw TranscriptionException('Invalid response from service');
-  //       }
-  //     }
-
-  //     // Handle ElevenLabs specific errors
-  //     String errMsg = 'Speech-to-text failed (${response.statusCode})';
-  //     try {
-  //       final errJson = jsonDecode(body) as Map<String, dynamic>;
-  //       final detail = errJson['detail']?.toString();
-  //       if (detail != null && detail.isNotEmpty) {
-  //         errMsg = detail;
-  //       }
-  //       debugPrint('Error details: $body');
-  //     } catch (_) {
-  //       debugPrint('Could not parse error response');
-  //     }
-
-  //     // Generic error messages for users
-  //     if (response.statusCode == 401 || response.statusCode == 403) {
-  //       errMsg = 'Speech-to-text service is currently unavailable';
-  //     } else if (response.statusCode == 429) {
-  //       errMsg = 'Service limit reached. Please try again later';
-  //     } else if (response.statusCode == 500) {
-  //       errMsg = 'Server error. Please try again';
-  //     }
-
-  //     throw TranscriptionException(errMsg);
-  //   } catch (e) {
-  //     debugPrint('❌ ElevenLabs STT error: $e');
-  //     if (e is TranscriptionException || e is FileAccessException) rethrow;
-  //     throw TranscriptionException('Could not transcribe your recording');
-  //   }
-  // }
 
   Future<CallRecord> generateSummary(String audioPath, String userId) async {
     final now = DateTime.now();
