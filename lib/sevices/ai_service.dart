@@ -44,7 +44,7 @@ class FileAccessException implements Exception {
 class AIService {
   // Hardcoded ElevenLabs credentials
   static const String _elevenLabsApiKey =
-      'sk_194edde5df3fbb0554c2410b26601f403cb609479d07a28f'; // ⚠️ Replace with your actual key
+      'sk_194edde5df3fbb0554c2410b26601f403cb609479d07a28f'; 
   static const String _elevenLabsVoiceId = '21m00Tcm4TlvDq8ikWAM';
 
   AIService(); // No config parameter needed anymore
