@@ -770,29 +770,4 @@ class _RegisterPageState extends State<RegisterPage>
   }
 }
 
-// =============================================================================
-// Add this to your AuthService class if it doesn't exist
-// =============================================================================
-/*
-  Future<bool> registerWithEmail(String email, String password, String name) async {
-    try {
-      // Your registration logic here
-      // This could be Firebase Auth, your own backend, etc.
-      
-      // Example with Firebase:
-      // final userCredential = await _firebaseAuth.createUserWithEmailAndPassword(
-      //   email: email,
-      //   password: password,
-      // );
-      // 
-      // await userCredential.user?.updateDisplayName(name);
-      // 
-      // return true;
-      
-      return true; // Return true on success
-    } catch (e) {
-      debugPrint('Registration failed: $e');
-      return false;
-    }
-  }
-*/
+
